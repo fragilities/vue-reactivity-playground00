@@ -25,7 +25,9 @@ export default {
 
   data() {
     return {
-      dataPosts: [],
+      dataPosts: [
+        { "id": 1, "title": "json-server", "author": "typicode" },
+      ],
       dataComments: []
     }
   },
@@ -53,9 +55,6 @@ export default {
     // fetchPosts -> setPosts -> fetchComments -> setComments
     this.fetchPosts().then(posts => {
       this.fetchComments()
-
-      // the DOM that uses dataPosts will normally show the same data as posts from the store
-      this.dataPosts = posts
     })
 
     // Without "then", however, the fetching will be invoked asynchronously
@@ -80,6 +79,7 @@ export default {
       author: 'zoezachary'
     })
 
+    console.log('At mounted:')
     console.log('current posts:', this.posts)
     console.log('current dataPosts:', this.dataPosts)
   }
